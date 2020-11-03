@@ -13,7 +13,7 @@ class Goal(models.Model):
     )
 
     def __str__(self):
-        return self.titles
+        return self.title
 
     def get_absolute_url(self):
         return reverse('goal_detail', args=[str(self.id)])

@@ -1,20 +1,21 @@
 {% extends 'base.html' %}
-{% block title %}Goals{% endblock_title %}
+{% block title %}Goals{% endblock title %}
 {% block content %}
   {% for goal in object_list %}
     <div class="card">
       <div class="card-header">
         <span class="front-weight-bold">{{ goal.title }}</span> &middot;
-        <span class="text-muted">by {{ goal.author }} |
+        <span class="text-muted">by {{ goal.author }}
           {{ goal.date }}</span>
         </div?
         <div class="card-body">
           {{ goal.body }}
         </div>
         <div class="card-foorter text-center text-muted">
-          <a href="#">Edit</a> | <a href="#">Delete</a>
+          <a href="{% url 'goal_edit' goal.pk %}">Edit</a>
+          <a href="{% url 'goal_delete' goal.pk %}">Delete</a>
         </div>
       </div>
       <br />
-    {% endblock %}|
+    {% endfor %}
   {% endblock content %}
