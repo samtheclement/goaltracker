@@ -16,6 +16,7 @@ class GoalUpdateView(UpdateView):
     fields = ('title', 'body', )
     template_name = 'goal_edit.html'
 
+
 class GoalDeleteView(DeleteView):
     model = Goal
     template_name = 'goal_delete.html'
@@ -23,5 +24,9 @@ class GoalDeleteView(DeleteView):
 
 class GoalCreateView(CreateView):
     model = Goal
-    template_name = 'article_new.html'
+    template_name = 'goal_new.html'
     fields = ('title', 'body', 'author',)
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
